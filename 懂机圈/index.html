@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>懂机圈</title>
+		<script src="js/vue.js"></script>
+		<link rel="stylesheet" href="css/index .css">
+
+	</head>
+	<body>
+		<div id="app">
+			<!-- 导航开始 -->
+			<div class="header">
+				<ul>
+					<!-- logo -->
+					<li><img src="img/logo.jpg" alt="" class="header_img_farst"></li>
+					<!-- 遍历的内容 -->
+					<li v-for="(p,i) of arr" :key="i"><a href="#">{{p}}</a></li>
+					<li>
+						<!-- 搜索框 -->
+						<input class="input_one" type="search" placeholder="请输入你要搜索的内容">
+						<input class="input_tow" type="submit" value="搜索">
+					</li>
+					<li>
+						<!-- 多选框 -->
+						<a href="#" @click='dingweidh'>
+							<span><img src="img/定位.png" alt="" class="img_v"></span>
+							云南
+							<span><img src="img/icon_arrow_down.png" alt="" class="img_v"></span></a>
+					</li>
+					<!-- 悬停显示内容 -->
+					<li><a href="#" @mouseover='mouseOver' @mouseleave='mouseLeave'>下载APP</a></li>
+					<li><a href="#" >进入懂机圈</a></li>
+					<li><a href="#" class="dl">登录</a></li>
+					<li>|</li>
+					<li><a href="#" class="zc">注册</a></li>
+				</ul>
+			</div>
+			<div class="mianban">
+				<div  v-show='show' class="mianban_xuan">
+					<h2>扫码下载懂机圈</h2>
+					<img src="img/erweima.png" alt="">
+				</div>
+				<!-- 悬停部分结束 -->
+				<!-- 定位开始 -->
+				<div v-show="isshow">
+					<p>999</p>
+				</div>
+				<!-- 定位结束 -->
+				<!-- 面板开始 -->
+					<div>
+						<ul class="mianban_ul">
+							<li class="mianban_li"><a href="#">时尚</a></li>
+							<li class="mianban_li"><a href="#">拍照</a></li>
+							<li class="mianban_li"><a href="#">音乐</a></li>
+							<li class="mianban_li"><a href="#">商务</a></li>
+						</ul>
+					</div>
+					<div class="mianban_pp">
+						<div class="mianban_fl">
+							<div><p>热门品牌</p></div>
+							<div><p>国产</p></div>
+							<div><p>进口</p></div>
+							<div><p>0~1000</p></div>
+							<div><p>1000~3000</p></div>
+							<div><p>3000~5000</p></div>
+							<div><p>5000以上 </p></div>
+						</div>
+						<div>
+							<h2 class="fl_a">热门品牌</h2>
+							<a href="#" class="fl_a">更多品牌</a>
+						</div>
+					</div>	
+				</div>
+			<!-- 面板结束 -->
+		</div>
+		<script>
+			var vm=new Vue({
+				el:"#app",
+				data:{
+						arr:["懂机圈","首页","机型库","视频"],
+						show:false,
+						isshow:false,
+				},
+				methods:{
+					mouseOver(){
+						this.show=true
+					}, 
+					mouseLeave(){
+						this.show=false
+					},
+					dingweidh(){
+						this.isshow=true
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
